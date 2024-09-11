@@ -48,7 +48,7 @@ export default function Home() {
         const list = data?.result?.items;
         return list[list.length - 1];
     }, {
-        pollingInterval: 1500
+        pollingInterval: 1500,
     })
 
 
@@ -73,8 +73,8 @@ export default function Home() {
                 </div>
             </main>
             <div className="flex flex-wrap items-center justify-center mt-10 text-[22px]">
-                下载：{bytesToSize(data?.downloadSpeed || 0)}/s
-                上传：{bytesToSize(data?.uploadSpeed || 0)}/s
+                <span className="mr-6">下载：{bytesToSize(data?.downloadSpeed || 0)}/s</span>
+                <span>上传：{bytesToSize(data?.uploadSpeed || 0)}/s</span>
             </div>
         </div>
     );
