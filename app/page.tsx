@@ -39,11 +39,7 @@ export default function Home() {
 
     const [time, setTime] = useState(getTime());
     const {data} = useRequest(async () => {
-        const res = await fetch('/api/data', {
-            headers: {
-                cookie: 'sysauth_http=e5f796b1bbafae56ae18111aee9817e4'
-            }
-        });
+        const res = await fetch('/api/data');
         const data = await res.json();
         const list = data?.result?.items;
         return list[list.length - 1];
