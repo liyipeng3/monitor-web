@@ -39,14 +39,21 @@ export default function Home() {
 
     const [time, setTime] = useState(getTime());
     const {data} = useRequest(async () => {
-        const res = await fetch('/api/data');
-        const data = await res.json();
-        const list = data?.result?.items;
-        return list[list.length - 1];
+        try {
+            const res = await fetch('/api/data');
+            const data = await res.json();
+            const list = data?.result?.items;
+            return list[list.length - 1];
+        } catch (e) {
+            return {
+                downloadSpeed: 0,
+                uploadSpeed: 0,
+            };
+        }
+
     }, {
         pollingInterval: 1500,
     })
-
 
     useEffect(() => {
         setInterval(() => {
